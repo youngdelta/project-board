@@ -33,9 +33,9 @@ spring:
         h2.console.enabled: true
         sql.init.mode: always
 
-        data.reset:
-          base-path: /api
-          detection-strategy: annotated
+      data.reset:
+        base-path: /api
+        detection-strategy: annotated
 
 ---
 spring:
