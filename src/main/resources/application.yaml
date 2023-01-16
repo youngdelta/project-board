@@ -7,7 +7,7 @@ logging:
     org.springframework.web.servlet: debug
     org:
       hibernate:
-        SQL: info
+        SQL: debug
   org.hibernate.type.descriptor.sql.BasicBinder: trace
 
 
@@ -38,10 +38,12 @@ spring:
 ---
 
 #spring:
-#  config.activate.on-cloud-platform: testdb
+#  config:
+#    activate:
+#      on-profile: testdb
 #  datasource:
 #    url: jdbc:h2:mem:board;mode=mysql
 #    driverClassName: org.h2.Driver
 #    sql.init.mode: always
-#    test.database.replace: none
+#    test.database.replace: none   #@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 
