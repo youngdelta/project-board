@@ -17,7 +17,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.*;
 
 @DisplayName("Jpa 연결 테스트")
-//@ActiveProfiles("testdb")
+@ActiveProfiles("h2-dev")
 //@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)  //application.yaml 에서 test.database.rplace: none
 @Import(JpaConfig.class)
 @DataJpaTest
