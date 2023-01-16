@@ -18,8 +18,8 @@ import java.util.Objects;
 @Table(indexes = {
         @Index(columnList = "title"),
         @Index(columnList = "hashtag"),
-        @Index(columnList = "createAt"),
-        @Index(columnList = "createBy"),
+        @Index(columnList = "createdAt"),
+        @Index(columnList = "createdBy"),
 })
 @Entity
 public class Article {
@@ -64,7 +64,7 @@ public class Article {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Article article)) return false;
-        return id.equals(article.id);
+        return id != null && id.equals(article.id);
     }
 
     @Override
