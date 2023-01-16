@@ -12,9 +12,7 @@ logging:
 
 
 spring:
-  config:
-    activate:
-      on-profile: default
+#  config.activate.on-profile: default
   datasource:
     url: jdbc:mysql://localhost:3306/board
     username: root
@@ -33,9 +31,9 @@ spring:
         h2.console.enabled: true
         sql.init.mode: always
 
-      data.reset:
-        base-path: /api
-        detection-strategy: annotated
+    data.rest:
+      base-path: /api
+      detection-strategy: annotated
 
 ---
 spring:
@@ -59,9 +57,9 @@ spring:
         h2.console.enabled: true
         sql.init.mode: always
 
-        data.reset:
-          base-path: /api
-          detection-strategy: annotated
+    data.rest:
+      base-path: /api
+      detection-strategy: annotated
 
 
 ---
