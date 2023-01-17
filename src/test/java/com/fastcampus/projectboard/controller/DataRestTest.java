@@ -37,7 +37,7 @@ public class DataRestTest {
         //when
         try {
 //            mockMvc.perform(get("/api/articles")).andExpect(status().isOk()).andExpect(content().contentType(MediaType.valueOf("application/hal+json")));
-            mockMvc.perform(get("/articles"))
+            mockMvc.perform(get("/api/articles"))
                     .andExpect(status().isOk())
                     .andExpect(content().contentType(MediaType.valueOf("application/hal+json")))
                     .andDo(MockMvcResultHandlers.print())

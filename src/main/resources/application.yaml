@@ -4,29 +4,32 @@ management.endpoints.web.exposure.include: "*"
 logging:
   level:
     com.fastcampus.projectboard: debug
-    org.springframework.web.servlet: debug
+    org.springframework.web.servlet: info
     org:
       hibernate:
         SQL: debug
-  org.hibernate.type.descriptor.sql.BasicBinder: trace
+        org.hibernate.type.descriptor.sql.BasicBinder: trace
 
 
 spring:
 #  config.activate.on-profile: default
-  datasource:
-    url: jdbc:mysql://localhost:3306/board
-    username: root
-    password: admin
-    driver-class-name: com.mysql.cj.jdbc.Driver
+    datasource:
+      url: jdbc:mysql://localhost:3306/board
+      username: root
+      password: admin
+      driver-class-name: com.mysql.cj.jdbc.Driver
 
     jpa:
       defer-datasource-initialization: true
       hibernate.ddl-auto: create
       open-in-view: false
-      show-sql: true
+
       properties:
-        hibernate.format_sql: true
-        hibernate.default_batch_fetch_size: 100
+        hibernate:
+          show_sql: true
+          format_sql: true
+          default_batch_fetch_size: 100
+          use_sql_comments: true
 
         h2.console.enabled: true
         sql.init.mode: always
@@ -37,13 +40,13 @@ spring:
 
 ---
 spring:
-  config:
-    activate:
-      on-profile: h2-dev
-  datasource:
-    url: jdbc:h2:mem:testdb
-    username: sa
-    driver-class-name: org.h2.Driver
+    config:
+      activate:
+        on-profile: h2-dev
+    datasource:
+      url: jdbc:h2:mem:testdb
+      username: sa
+      driver-class-name: org.h2.Driver
 
     jpa:
       defer-datasource-initialization: true
@@ -51,6 +54,7 @@ spring:
       open-in-view: false
       show-sql: true
       properties:
+        hibernate.show_sql: true
         hibernate.format_sql: true
         hibernate.default_batch_fetch_size: 100
 
@@ -60,7 +64,6 @@ spring:
     data.rest:
       base-path: /api
       detection-strategy: annotated
-
 
 ---
 
