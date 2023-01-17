@@ -41,12 +41,12 @@ public class ArticleControllerTest {
 
         //
 
-        mockMvc.perform(MockMvcRequestBuilders.get("/articles"))
+        mockMvc.perform(MockMvcRequestBuilders.get("/articles/1"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
 //                .andExpect(MockMvcResultMatchers.content().contentType(MediaType.TEXT_HTML))
                 .andExpect(MockMvcResultMatchers.content().contentTypeCompatibleWith(MediaType.TEXT_HTML))
 //                .andExpect(MockMvcResultMatchers.content().contentType("application/hal+json"))
-                .andExpect(MockMvcResultMatchers.model().attributeExists("articles"))
+                .andExpect(MockMvcResultMatchers.model().attributeExists("articles/detail"))
 //                .andDo(MockMvcResultHandlers.print())
         ;
 

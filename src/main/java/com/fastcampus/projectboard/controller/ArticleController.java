@@ -15,12 +15,15 @@ public class ArticleController {
     @GetMapping
     public String articles(ModelMap map) {
         map.addAttribute("articles", List.of());
+
         return "articles/index";
     }
 
-    @GetMapping("/articles/{id}")
-    public String articlesOne(@PathVariable String id, ModelMap map) {
-        map.addAttribute("articles", List.of());
-        return "articles/index";
+    @GetMapping("/{id}")
+    public String articlesOne(@PathVariable Long id, ModelMap map) {
+        map.addAttribute("article", null);
+        map.addAttribute("articleComments", List.of());
+
+        return "articles/detail";
     }
 }
