@@ -20,7 +20,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 //@WebMvcTest
 @Transactional
-@SpringBootTest
+//@SpringBootTest
+@WebMvcTest
 public class DataRestTest {
 
     private final MockMvc mockMvc;
@@ -50,4 +51,6 @@ public class DataRestTest {
         //then
 
     }
+
+
 }
