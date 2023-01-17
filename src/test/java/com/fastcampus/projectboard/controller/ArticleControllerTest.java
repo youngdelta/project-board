@@ -1,10 +1,12 @@
 package com.fastcampus.projectboard.controller;
 
+import com.fastcampus.projectboard.config.SecurityConfig;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.Import;
 import org.springframework.http.MediaType;
 import org.springframework.mock.http.server.reactive.MockServerHttpRequest;
 import org.springframework.stereotype.Controller;
@@ -20,7 +22,8 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@DisplayName("Vuew - 게시판 : 게시글 ")
+@DisplayName("View - 게시판 : 게시글 ")
+@Import(SecurityConfig.class)
 @AutoConfigureMockMvc
 @Transactional
 @SpringBootTest
@@ -41,12 +44,12 @@ public class ArticleControllerTest {
 
         //
 
-        mockMvc.perform(MockMvcRequestBuilders.get("/articles/1"))
+        mockMvc.perform(MockMvcRequestBuilders.get("/articles"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
 //                .andExpect(MockMvcResultMatchers.content().contentType(MediaType.TEXT_HTML))
                 .andExpect(MockMvcResultMatchers.content().contentTypeCompatibleWith(MediaType.TEXT_HTML))
 //                .andExpect(MockMvcResultMatchers.content().contentType("application/hal+json"))
-                .andExpect(MockMvcResultMatchers.model().attributeExists("articles/detail"))
+                .andExpect(MockMvcResultMatchers.model().attributeExists("articles"))
 //                .andDo(MockMvcResultHandlers.print())
         ;
 
@@ -60,11 +63,13 @@ public class ArticleControllerTest {
         //when
         try {
 //            mockMvc.perform(get("/api/articles")).andExpect(status().isOk()).andExpect(content().contentType(MediaType.valueOf("application/hal+json")));
-            mockMvc.perform(get("/articles/11"))
+            mockMvc.perform(get("/articles/1"))
                     .andExpect(status().isOk())
-                    .andExpect(content().contentType(MediaType.TEXT_HTML))
-//                    .andExpect(MockMvcResultMatchers.content().contentType("application/hal+json"))
-//                    .andDo(MockMvcResultHandlers.print())
+//                    .andExpect(content().contentType(MediaType.TEXT_HTML))
+                    .andExpect(content().contentTypeCompatibleWith(MediaType.TEXT_HTML))
+                    .andExpect(MockMvcResultMatchers.model().attributeExists("article"))
+                    .andExpect(MockMvcResultMatchers.model().attributeExists("articleComments"))
+//                .andDo(MockMvcResultHandlers.print())
             ;
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -73,6 +78,20 @@ public class ArticleControllerTest {
 
         //then
 
+    }
+
+
+    @DisplayName("[View] [GET] 로그인 페이지 호출")
+    @Test
+    public void authTest() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.get("/login"))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+//                .andExpect(MockMvcResultMatchers.content().contentType(MediaType.TEXT_HTML))
+                .andExpect(MockMvcResultMatchers.content().contentTypeCompatibleWith(MediaType.TEXT_HTML))
+//                .andExpect(MockMvcResultMatchers.content().contentType("application/hal+json"))
+//                .andExpect(MockMvcResultMatchers.model().attributeExists("login"))
+//                .andDo(MockMvcResultHandlers.print())
+        ;
     }
 
 
