@@ -8,10 +8,10 @@ logging:
     org:
       hibernate:
         SQL: debug
-#        type.descriptor.sql.BasicBinder: trace
-        type:
-          descriptor:
-            sql: trace
+        type.descriptor.sql.BasicBinder: trace
+#        type:
+#          descriptor:
+#            sql: trace
 
 
 spring:
@@ -24,7 +24,8 @@ spring:
 
     jpa:
       defer-datasource-initialization: true
-      hibernate.ddl-auto: create
+#      hibernate.ddl-auto: create
+      hibernate.ddl-auto: validate
       open-in-view: false
 
       properties:
@@ -53,7 +54,8 @@ spring:
 
     jpa:
       defer-datasource-initialization: true
-      hibernate.ddl-auto: create
+#      hibernate.ddl-auto: create
+      hibernate.ddl-auto: validate
       open-in-view: false
       show-sql: true
       properties:
